@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "312883522107",
+    "project_id": "mad-act13-authapp-1ea91",
+    "storage_bucket": "mad-act13-authapp-1ea91.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312883522107:android:dc07991e6d0d34d04aca1e",
+        "android_client_info": {
+          "package_name": "com.example.mad_act13"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYAdgMFCTKrYb9YeVj90vC2_aB6d6uwpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
