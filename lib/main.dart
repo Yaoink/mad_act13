@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'ui/screens/register_screen.dart';
 
 
 void main() async {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     Widget build(BuildContext context) {
         return const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: AuthenticationScreen(),
+            home: RegisterScreen(),
         );
     }
 }

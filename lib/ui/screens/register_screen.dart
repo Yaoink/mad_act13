@@ -30,12 +30,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: Form(
+          key: _formKey,
+          child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
               controller: _emailController,
-              decoration: const InputDecoration(labelText: 'Email', prefixIcon: Icon(Icons.lock)),
+              decoration: const InputDecoration(
+                labelText: 'Email',
+                prefixIcon: Icon(Icons.lock),
+                border: OutlineInputBorder(),
+              ),
               validator: (value) {
                   if (value == null || value.isEmpty) return 'Email is required';
                   if (!value.contains('@')) return 'Enter a valid email like test@gsu.com';
@@ -45,7 +51,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             const SizedBox(height: 20),
             TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Password', prefixIcon: Icon(Icons.lock)),
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                  prefixIcon: Icon(Icons.lock),
+                  border: OutlineInputBorder(),
+                ),
                 obscureText: true,
                 validator: (value) {
                     if (value == null || value.length < 6) return 'Password must be at least 6 characters';
@@ -53,6 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
             ),
             const SizedBox(height: 20),
+            //register and sign in buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -64,7 +75,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Registration successful!')),
                           );
-                          Navigator.pop(context);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProfileScreen(),
+                            ),
+                          );
                         } on FirebaseAuthException catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Error: ${e.message}')),
@@ -82,7 +98,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Sign in successful!')),
                         );
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileScreen(),
+                          ),
+                        );
                       } on FirebaseAuthException catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Error: ${e.message}')),
@@ -95,6 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ],
             ),
           ],
+        ),
         ),
       ),
     );
