@@ -1,4 +1,7 @@
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import "/services/auth_service.dart";
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -8,6 +11,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +23,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Skeleton for Profile Screen"),
+            Text(
+              "Welcome, ${_authService.currentUser?.email ?? 'No user'}",
+              style: TextStyle(fontSize: 24),
+            ),
           ],
         ),
       ),
